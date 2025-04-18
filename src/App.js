@@ -1,4 +1,7 @@
 import React, { useState} from 'react';
+import './App.css';
+
+
 
 function App() {
   const [jsonInput, setJsonInput] = useState('');
@@ -38,7 +41,7 @@ function App() {
 
 
   return (
-    <div style={{ padding: "2rem" }}>
+    <div className="app-container">
       <h1>Tree Builder Frontend</h1>
       <form onSubmit={handleSubmit}>
         <textarea
@@ -53,7 +56,7 @@ function App() {
       </form>
 
       {response && (
-        <div>
+        <div className="response-container">
           <h2>Returned Tree:</h2>
           <pre>{JSON.stringify(response, null, 2)}</pre>
         </div>
