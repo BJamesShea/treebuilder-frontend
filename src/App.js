@@ -4,22 +4,24 @@ import './App.css';
 
 
 function App() {
-  const [jsonInput, setJsonInput] = useState('');
+  const [inputString, setInputString] = useState('');
   const [response, setResponse] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const parsed = JSON.parse(jsonInput);
+      const parsedValues = inputString
+      .split(',')
+      .map(val => parseInt(val.trim()))
+      .filter(val => !isNaN(val));
 
-      await fetch('http://localhost:8080/api/tree', {
+     await fetch('http://localhost:8080/api/tree', {
         method: 'POST',
-        headers: {'Content-Type' : 'application/json'},
-        body: JSON.stringify(parsed),
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify({ values : parsedValues}),
       });
 
-      const getRes = await fetch('http://localhost:8080/api/tree');
-      const tree = await getRes.json();
+      const tree = await (await fetch('http://localhost:8080/api/tree')).json();
       setResponse(tree);
 
     }
@@ -33,23 +35,16 @@ function App() {
 
 
 
- // styling ideas (note to self)
-    // centered, light tan/paper background, orange-ish text box
-    // hover buttons
-
-
-
-
   return (
     <div className="app-container">
       <h1>Tree Builder Frontend</h1>
       <form onSubmit={handleSubmit}>
         <textarea
-        rows="10"
-        cols="60"
-        placeholder='Paste JSON like: {"value":"A","left":{"value":"B"},"right":{"value":"C"}}'
-        value={jsonInput}
-        onChange={(e) => setJsonInput(e.target.value)}
+        rows="4"
+        cols="50"
+        placeholder='Enter numbers separated by commas'
+        value={inputString}
+        onChange={(e) => setInputString(e.target.value)}
         />
         <br/>
         <button type="submit">Submit Tree</button>
