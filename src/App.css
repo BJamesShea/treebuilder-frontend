@@ -6,3 +6,50 @@ body {
   padding: 0;
 }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+textarea {
+  background-color: #fff4e6;
+  border: 1px solid #ffaa5a;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  color: #5a3e1b;
+  width: 100%;
+  max-width: 700px;
+}
+
+button {
+  margin-top: 1rem;
+  background-color: #ff8c42;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #e67700;
+}
+
+.response-container {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 700px;
+}
+
+pre {
+  background-color: #f0f0f0;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}

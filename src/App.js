@@ -38,13 +38,6 @@ function App() {
     // hover buttons
 
 
-    // test data remove before submission
-  //   {
-  //  "value": "A",
-  //  "left": { "value": "B" },
-  //  "right": { "value": "C" }
-  //   }
-
 
 
   return (
